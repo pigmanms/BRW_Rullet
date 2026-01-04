@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대한민국 랜덤 여행 룰렛</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">룰렛으로 떠나는 즉흥 여행</p>
+        <h1>대한민국 랜덤 여행지 선정기</h1>
+        <p class="lede">
+          시 · 군 · 읍 단위로 여행지를 골라드립니다. 강원도는 2배 확률로 등장하며,
+          서울·경기도는 필요에 따라 제외하거나 포함할 수 있습니다.
+        </p>
+        <div class="chip-row">
+          <span class="chip">실시간 지도 확대</span>
+          <span class="chip">강원도 가중치 적용</span>
+          <span class="chip">동적으로 반짝이는 UI</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <p class="hero-label">현재 전략</p>
+        <h2>전국 랜덤 투어</h2>
+        <p class="hero-note">룰렛을 돌려 오늘의 여행지를 정해보세요.</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card control-card">
+        <div class="card-header">
+          <div>
+            <p class="overline">옵션</p>
+            <h3>룰렛 설정</h3>
+          </div>
+          <div class="badge">시/군/읍 단위</div>
+        </div>
+        <div class="toggle-group">
+          <label class="toggle">
+            <input type="checkbox" id="toggleSeoul" />
+            <span class="slider"></span>
+            <span class="toggle-label">서울 포함하기</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="toggleGyeonggi" />
+            <span class="slider"></span>
+            <span class="toggle-label">경기도 포함하기</span>
+          </label>
+        </div>
+        <p class="hint">기본적으로 서울과 경기도는 제외됩니다. 필요하면 스위치를 켜세요.</p>
+        <button id="spinButton" class="cta">룰렛 돌리기</button>
+        <div class="status-row">
+          <div>
+            <p class="label">강원도 가중치</p>
+            <p class="value">다른 지역 대비 2배</p>
+          </div>
+          <div>
+            <p class="label">데이터 깊이</p>
+            <p class="value">시 · 군 · 읍 기준</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card result-card">
+        <div class="card-header">
+          <div>
+            <p class="overline">결과</p>
+            <h3>오늘의 여행지</h3>
+          </div>
+          <div class="badge badge-ghost">Dynamic UI</div>
+        </div>
+        <div class="roulette-display" id="rouletteDisplay">
+          <p class="mini-label">선택된 위치</p>
+          <h2 id="locationName">준비 완료</h2>
+          <p id="locationMeta" class="meta">룰렛을 돌려주세요.</p>
+        </div>
+        <div class="history">
+          <div class="history-header">
+            <p class="overline">히스토리</p>
+            <span class="pill" id="historyCount">0회</span>
+          </div>
+          <ul id="historyList"></ul>
+        </div>
+      </section>
+
+      <section class="card map-card">
+        <div class="card-header">
+          <div>
+            <p class="overline">지도</p>
+            <h3>실시간 확대</h3>
+          </div>
+          <div class="badge">OSM / Leaflet</div>
+        </div>
+        <div id="map"></div>
+        <p class="hint">룰렛이 멈추면 해당 지역이 지도에 표시되고 자동으로 확대됩니다.</p>
+      </section>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="script.js"></script>
+</body>
+</html>
